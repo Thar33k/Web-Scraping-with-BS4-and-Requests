@@ -22,7 +22,7 @@ datas = soup.find_all('a',class_="a-link-normal")[17:110]
 indices_for_brand = list(range(0, len(datas), 2))
 brand_names =[datas[index].text for index in indices_for_brand ]
 del brand_names[-1] # remove empty string
-print(brand_names)
+
 
 #MOVIE NAMES
 indices_for_data= list((range(0, len(datas),1)))
@@ -30,7 +30,7 @@ movie_names =[]
 for x in indices_for_data:
     if x not in indices_for_brand:
         movie_names.append(datas[x].text)
-print(movie_names)
+
 
 #TOTAL GROSSINNG AND LIFETIME GROSSING
 number_data_list = soup.find_all('td',class_="a-text-right")
@@ -41,19 +41,19 @@ compiled_list=[]
 start =0
 end = 3
 count = 0
-segmentd_list = []
+segmented_list = []
 
 def get_three_items(start: int, end: int, count: None):
     for x in range(start, end):
         try:
-            segmentd_list.append(number_data[x])
+            segmented_list.append(number_data[x])
         except IndexError:
             break
-    compiled_list.append(segmentd_list)
+    compiled_list.append(segmented_list)
     count +=1
     start = start+3
     end = end+3
-    result =[start, end, count,segmentd_list]
+    result =[start, end, count, segmented_list]
     return result
 
 result = get_three_items(start=start, end=end, count=count)
@@ -61,12 +61,12 @@ continue_loop = True
 
 #LOOP
 while continue_loop:
-    segmentd_list = []
+    segmented_list = []
     count += 1
     start = start + 3
     end = end + 3
     result1 = get_three_items(start=start, end=end, count=count)
-    if (count == 45):
+    if count == 45:
         continue_loop = False
 
 #MERGE DATA
@@ -75,8 +75,8 @@ raw_data = {
     'Brand':brand_names,
     'Movie_Released': movie_names,
     'Total_movie_released':[x[1] for x in compiled_list],
-    'Total_Grossing_for_all_Movies':[x[0] for x in compiled_list],
-    'LIfe_Time_Grossing_for_Movie':[x[2] for x in compiled_list]
+    'Total_Grossing_for_all_Movies':[x[0].replace("$", "") for x in compiled_list],
+    'LIfe_Time_Grossing_for_Movie':[x[2].replace("$", "") for x in compiled_list]
 
 
 }
