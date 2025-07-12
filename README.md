@@ -6,8 +6,8 @@ This dataset was obtained by web scraping using the `BeautifulSoup` (BS4) and `r
 
 ### 1. main.py file contains python code
 
-### 2. Project1-BS4-Analysis.ipynb conatins jupyter notebook for Exploratory analysis
-### 3. Movie_data.csv conatins csv data
+### 2. Project1-BS4-Analysis.ipynb contains jupyter notebook for Exploratory analysis
+### 3. Movie_data.csv contains csv data
 
 It contains **46 rows** of data showing:
 - **Brand**
