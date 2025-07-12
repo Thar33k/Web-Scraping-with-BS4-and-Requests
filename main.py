@@ -80,7 +80,6 @@ raw_data = {
 
 
 }
-
 df = pd.DataFrame(raw_data)
 
 df.to_csv('Movies_raw_data.csv', index=False)
